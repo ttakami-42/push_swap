@@ -6,7 +6,7 @@
 /*   By: ttakami <ttakami@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 02:46:02 by ttakami           #+#    #+#             */
-/*   Updated: 2023/02/21 02:55:20 by ttakami          ###   ########.fr       */
+/*   Updated: 2023/02/21 03:13:55 by ttakami          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	parse_input(int argc, char *argv[], int **vals, int *size)
 {
-	char **input;
+	char	**input;
 
 	if (argc == 2)
 	{
