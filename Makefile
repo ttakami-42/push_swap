@@ -6,7 +6,7 @@
 #    By: ttakami <ttakami@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/12 15:46:07 by ttakami           #+#    #+#              #
-#    Updated: 2023/02/20 03:34:12 by ttakami          ###   ########.fr        #
+#    Updated: 2023/02/20 21:01:08 by ttakami          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRCS		= main.c \
 				stack.c \
 				stack_utils.c \
 				stack_info.c \
-				operationlist.c \
+				opelst.c \
 				operation_s.c \
 				operation_p.c \
 				operation_r.c \
