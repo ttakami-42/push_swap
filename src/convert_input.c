@@ -6,7 +6,7 @@
 /*   By: ttakami <ttakami@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 11:27:27 by ttakami           #+#    #+#             */
-/*   Updated: 2023/02/20 04:22:48 by ttakami          ###   ########.fr       */
+/*   Updated: 2023/02/21 01:42:23 by ttakami          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ int	*convert_input_to_array(char **inputs, int size)
 	{
 		values[i] = convert_input_to_int(inputs[i], &is_err);
 		if (is_err)
+		{
+			free(values);
 			return (NULL);
+		}
 		i++;
 	}
 	return (values);

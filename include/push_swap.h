@@ -6,7 +6,7 @@
 /*   By: ttakami <ttakami@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 11:30:23 by ttakami           #+#    #+#             */
-/*   Updated: 2023/02/20 20:27:07 by ttakami          ###   ########.fr       */
+/*   Updated: 2023/02/21 01:18:36 by ttakami          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define MSG_R_ROTATE_B "rrb"
 # define MSG_R_ROTATE_BOTH "rrr"
 
+# define REF_NUM_MINI 6
 # define REF_NUM_LOW 10
 # define REF_NUM_BASE 100
 # define REF_NUM_MID 200
@@ -61,6 +62,7 @@ typedef struct s_stack_infomation
 int		count_inputlen(char **input);
 int		*convert_input_to_array(char **inputs, int size);
 int		*validate_input(char **input, int size);
+void	free_input(char **array);
 t_elem	*element_new(int val);
 t_stk	*stack_new(void);
 void	stack_push(t_stk *self, t_elem *el);
@@ -72,7 +74,7 @@ void	stack_info_deinit(t_stk_info *in);
 int		stack_is_sorted(t_stk *self);
 int		stack_get_max(t_stk *self);
 int		stack_get_min(t_stk *self);
-int		stack_get_indexofnum(t_stk *self, int num);
+int		stack_get_index(t_stk *self, int num);
 void	stack_free(t_stk *stk);
 int		opelst_add_back(t_list **lst, char *op);
 void	opelst_print(void *op);
@@ -89,8 +91,8 @@ int		operation_rrb(t_stk_info *in);
 int		operation_rrr(t_stk_info *in);
 int		operation_smart_s(t_stk_info *in, int mn);
 int		operation_smart_r(t_stk_info *in, int mn);
-int		solver(t_stk_info *in);
-int		solver_under_five(t_stk_info *in);
+int		solver_less_than_six(t_stk_info *in);
+int		solver_six_or_more(t_stk_info *in);
 int		push_swap(int *vals, int size);
 void	puterr_exit(void);
 

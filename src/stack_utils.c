@@ -6,7 +6,7 @@
 /*   By: ttakami <ttakami@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 01:04:20 by ttakami           #+#    #+#             */
-/*   Updated: 2023/02/20 04:19:28 by ttakami          ###   ########.fr       */
+/*   Updated: 2023/02/21 00:42:16 by ttakami          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	stack_get_min(t_stk *self)
 	return (min);
 }
 
-int	stack_get_indexofnum(t_stk *self, int num)
+int	stack_get_index(t_stk *self, int num)
 {
 	int		idx;
 	t_elem	*el;

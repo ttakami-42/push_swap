@@ -6,7 +6,7 @@
 #    By: ttakami <ttakami@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/12 15:46:07 by ttakami           #+#    #+#              #
-#    Updated: 2023/02/20 21:01:08 by ttakami          ###   ########.fr        #
+#    Updated: 2023/02/21 01:41:12 by ttakami          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,8 @@ SRCS		= main.c \
 				operation_p.c \
 				operation_r.c \
 				operation_rr.c \
-				solver.c \
-				solver_under_five.c \
+				solver_less_than_six.c \
+				solver_six_or_more.c \
 				push_swap.c \
 				utils.c
 #SRCSB		=
@@ -60,9 +60,6 @@ re:	fclean all
 #bonus:
 #@$(MAKE) WITH_BONUS=1 $(NAME)
 
-debug:		$(ALL_OBJS)
-	gcc --sanitize=leak -o $(NAME) $(ALL_OBJS) ./libft/libft.a
-
 $(OBJDIR)/%.o:	%.c
 	@[ -d $(OBJDIR) ]
 	$(CC) -c $(CFLAGS) -o $@ $< $(HEADERPATH)
@@ -71,9 +68,12 @@ $(LIBFT):
 	@make bonus -C libft
 
 $(NAME):	$(LIBFT) $(ALL_OBJS)
-	gcc -o $(NAME) $(ALL_OBJS) ./libft/libft.a
+	gcc -o $(NAME) $(ALL_OBJS) $(LIBFT)
 
-.PHONY:	all clean fclean re
+debug:	directories $(NAME)
+	gcc --sanitize=leak -o $(NAME) $(ALL_OBJS) $(LIBFT)
+
+.PHONY:	all clean fclean re debug
 
 #.PHONY:	all clean fclean re bonus debug
 

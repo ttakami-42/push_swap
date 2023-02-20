@@ -6,34 +6,51 @@
 /*   By: ttakami <ttakami@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 17:07:50 by ttakami           #+#    #+#             */
-/*   Updated: 2023/02/20 20:21:25 by ttakami          ###   ########.fr       */
+/*   Updated: 2023/02/21 01:12:44 by ttakami          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+static int	prepare(t_stk_info *in, int *vals, int size);
+
 int	push_swap(int *vals, int size)
 {
 	t_stk_info	in;
+	int			is_ok;
 	void		(*f)(void *);
 
 	f = opelst_print;
-	if (!stack_info_init(&in, size))
+	if (!prepare(&in, vals, size))
 		return (0);
-	if (!stack_add_a_front(&in, vals))
+	if (stack_is_sorted(in.a))
 	{
-		free(vals);
+		stack_info_deinit(&in);
+		return (1);
+	}
+	if (in.size < REF_NUM_MINI)
+		is_ok = solver_less_than_six(&in);
+	else
+		is_ok = solver_six_or_more(&in);
+	if (!is_ok)
+	{
 		stack_info_deinit(&in);
 		return (0);
 	}
-	free(vals);
-	stack_reverse_a(&in);
-	if (stack_is_sorted(in.a))
-		return (1);
-	if (!solver(&in))
-		return (0);
 	ft_lstiter(in.opelst, f);
-	ft_lstclear(&(in.opelst), NULL);
 	stack_info_deinit(&in);
+	return (1);
+}
+
+static int	prepare(t_stk_info *in, int *vals, int size)
+{
+	if (!stack_info_init(in, size))
+		return (0);
+	if (!stack_add_a_front(in, vals))
+	{
+		stack_info_deinit(in);
+		return (0);
+	}
+	stack_reverse_a(in);
 	return (1);
 }

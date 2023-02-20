@@ -6,7 +6,7 @@
 /*   By: ttakami <ttakami@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 14:01:36 by ttakami           #+#    #+#             */
-/*   Updated: 2023/02/20 20:17:37 by ttakami          ###   ########.fr       */
+/*   Updated: 2023/02/21 01:10:53 by ttakami          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,5 @@ void	stack_info_deinit(t_stk_info *in)
 {
 	stack_free(in->a);
 	stack_free(in->b);
+	ft_lstclear(&(in->opelst), NULL);
 }
