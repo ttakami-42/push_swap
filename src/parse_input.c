@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parse_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttakami <ttakami@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/07 11:18:42 by ttakami           #+#    #+#             */
-/*   Updated: 2023/02/21 02:55:28 by ttakami          ###   ########.fr       */
+/*   Created: 2023/02/21 02:46:02 by ttakami           #+#    #+#             */
+/*   Updated: 2023/02/21 02:55:20 by ttakami          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char *argv[])
+int	parse_input(int argc, char *argv[], int **vals, int *size)
 {
-	int	*vals;
-	int	size;
-	int	is_sorted;
+	char **input;
 
-	size = argc - 1;
-	if (!parse_input(argc, argv, &vals, &size))
-		puterr_exit();
-	is_sorted = push_swap(vals, size);
-	free(vals);
-	if (!is_sorted)
-		puterr_exit();
-	exit(EXIT_SUCCESS);
+	if (argc == 2)
+	{
+		input = ft_split(argv[1], ' ');
+		if (!input)
+			return (0);
+		*size = count_inputlen(input);
+	}
+	else if (argc > 2)
+		input = &(argv[1]);
+	else
+		return (0);
+	*vals = validate_input(input, *size);
+	if (argc == 2)
+		free_input(input);
+	if (!*vals)
+		return (0);
+	return (1);
 }

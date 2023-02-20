@@ -6,16 +6,17 @@
 #    By: ttakami <ttakami@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/12 15:46:07 by ttakami           #+#    #+#              #
-#    Updated: 2023/02/21 01:41:12 by ttakami          ###   ########.fr        #
+#    Updated: 2023/02/21 02:52:00 by ttakami          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= push_swap
 CC			= cc
 CFLAGS		= -Wall -Werror -Wextra
-SRCS		= main.c \
+SRCS		=   utils.c \
 				convert_input.c \
 				validate_input.c \
+				parse_input.c \
 				element.c \
 				stack.c \
 				stack_utils.c \
@@ -28,7 +29,7 @@ SRCS		= main.c \
 				solver_less_than_six.c \
 				solver_six_or_more.c \
 				push_swap.c \
-				utils.c
+				main.c
 #SRCSB		=
 OBJDIR		= obj
 LIBFT		= libft/libft.a

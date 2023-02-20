@@ -6,7 +6,7 @@
 /*   By: ttakami <ttakami@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 02:42:34 by ttakami           #+#    #+#             */
-/*   Updated: 2023/02/21 01:24:05 by ttakami          ###   ########.fr       */
+/*   Updated: 2023/02/21 02:53:09 by ttakami          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,14 +67,10 @@ int	stack_add_a_front(t_stk_info *in, int *vals)
 	{
 		new = element_new(vals[i]);
 		if (!new)
-		{
-			free(vals);
 			return (0);
-		}
 		stack_push(in->a, new);
 		i++;
 	}
-	free(vals);
 	in->a->max = in->size - 1;
 	in->b->max = in->size - 1;
 	in->a->min = 0;

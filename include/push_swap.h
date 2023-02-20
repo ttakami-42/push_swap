@@ -6,7 +6,7 @@
 /*   By: ttakami <ttakami@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 11:30:23 by ttakami           #+#    #+#             */
-/*   Updated: 2023/02/21 01:18:36 by ttakami          ###   ########.fr       */
+/*   Updated: 2023/02/21 02:50:11 by ttakami          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct s_stack_infomation
 int		count_inputlen(char **input);
 int		*convert_input_to_array(char **inputs, int size);
 int		*validate_input(char **input, int size);
+int		parse_input(int argc, char *argv[], int **vals, int *size);
 void	free_input(char **array);
 t_elem	*element_new(int val);
 t_stk	*stack_new(void);
