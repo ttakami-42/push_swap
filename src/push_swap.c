@@ -6,7 +6,7 @@
 /*   By: ttakami <ttakami@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 17:07:50 by ttakami           #+#    #+#             */
-/*   Updated: 2023/02/21 01:12:44 by ttakami          ###   ########.fr       */
+/*   Updated: 2023/02/21 02:39:03 by ttakami          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,10 @@ int	push_swap(int *vals, int size)
 static int	prepare(t_stk_info *in, int *vals, int size)
 {
 	if (!stack_info_init(in, size))
+	{
+		free(vals);
 		return (0);
+	}
 	if (!stack_add_a_front(in, vals))
 	{
 		stack_info_deinit(in);
