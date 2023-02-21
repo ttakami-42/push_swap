@@ -38,8 +38,6 @@ void	element_add_back(t_elem **el, t_elem *new)
 {
 	t_elem	*cur_last;
 
-	if (!el)
-		return ;
 	cur_last = element_last(*el);
 	if (!cur_last)
 		*el = new;
