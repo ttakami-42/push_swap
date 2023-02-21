@@ -43,7 +43,7 @@ void	element_add_back(t_elem **el, t_elem *new)
 		*el = new;
 	else
 	{
-		new->prev = *el;
+		new->prev = cur_last;
 		cur_last->next = new;
 	}
 }
