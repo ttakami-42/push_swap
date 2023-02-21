@@ -78,22 +78,3 @@ int	stack_add_a_back(t_stk_info *in, int *vals)
 	in->a->size = in->size;
 	return (1);
 }
-
-void	stack_reverse_a(t_stk_info *in)
-{
-	t_elem	*el;
-	t_elem	*save;
-	t_stk	*sa;
-
-	sa = in->a;
-	el = sa->bottom;
-	sa->top = sa->bottom;
-	while (el)
-	{
-		save = el->prev;
-		el->prev = el->next;
-		el->next = save;
-		sa->bottom = el;
-		el = save;
-	}
-}

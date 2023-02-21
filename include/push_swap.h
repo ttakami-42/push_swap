@@ -71,7 +71,6 @@ t_stk	*stack_new(void);
 void	stack_push(t_stk *self, t_elem *el);
 t_elem	*stack_pop(t_stk *self);
 int		stack_add_a_back(t_stk_info *in, int *vals);
-void	stack_reverse_a(t_stk_info *in);
 int		stack_info_init(t_stk_info *in, int size);
 void	stack_info_deinit(t_stk_info *in);
 int		stack_is_sorted(t_stk *self);

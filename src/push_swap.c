@@ -51,6 +51,5 @@ static int	prepare(t_stk_info *in, int *vals, int size)
 		stack_info_deinit(in);
 		return (0);
 	}
-	stack_reverse_a(in);
 	return (1);
 }
