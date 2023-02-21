@@ -68,7 +68,7 @@ int	stack_add_a_back(t_stk_info *in, int *vals)
 		new = element_new(vals[i]);
 		if (!new)
 			return (0);
-		element_add_back(el, new);
+		element_add_back(in->a->top, new);
 		in->a->bottom = new;
 		i++;
 	}
