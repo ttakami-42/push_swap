@@ -57,7 +57,7 @@ t_elem	*stack_pop(t_stk *self)
 	return (el);
 }
 
-int	stack_add_a_front(t_stk_info *in, int *vals)
+int	stack_add_a_back(t_stk_info *in, int *vals)
 {
 	int		i;
 	t_elem	*new;
@@ -68,7 +68,8 @@ int	stack_add_a_front(t_stk_info *in, int *vals)
 		new = element_new(vals[i]);
 		if (!new)
 			return (0);
-		stack_push(in->a, new);
+		element_add_back(el, new);
+		in->a->bottom = new;
 		i++;
 	}
 	in->a->max = in->size - 1;

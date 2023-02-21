@@ -46,7 +46,7 @@ static int	prepare(t_stk_info *in, int *vals, int size)
 {
 	if (!stack_info_init(in, size))
 		return (0);
-	if (!stack_add_a_front(in, vals))
+	if (!stack_add_a_back(in, vals))
 	{
 		stack_info_deinit(in);
 		return (0);

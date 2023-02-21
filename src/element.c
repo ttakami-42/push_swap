@@ -24,3 +24,28 @@ t_elem	*element_new(int val)
 	ptr->next = NULL;
 	return (ptr);
 }
+
+t_elem	*element_last(t_elem *el)
+{
+	if (!el)
+		return (NULL);
+	while (el->next)
+		el = el->next;
+	return (el);
+}
+
+void	element_add_back(t_elem **el, t_elem *new)
+{
+	t_elem	*cur_last;
+
+	if (!el)
+		return ;
+	cur_last = element_last(*el);
+	if (!cur_last)
+		*el = new;
+	else
+	{
+		new->prev = *el;
+		cur_last->next = new;
+	}
+}
