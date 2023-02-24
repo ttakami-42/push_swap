@@ -6,7 +6,7 @@
 /*   By: ttakami <ttakami@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 23:48:50 by ttakami           #+#    #+#             */
-/*   Updated: 2023/02/20 20:19:19 by ttakami          ###   ########.fr       */
+/*   Updated: 2023/02/23 22:02:04 by ttakami          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,13 @@ int	operation_rr(t_stk_info *in)
 	return (1);
 }
 
-int	operation_smart_r(t_stk_info *in, int mn)
+int	operation_smart_r(t_stk_info *in, int bkt_size)
 {
-	int	limit;
+	int	val_limit;
 
-	limit = in->a->min + mn;
-	if (in->a->top->value > limit
-		&& !(in->a->top->value <= limit + (mn / 3 * 2)))
+	val_limit = in->a->min + bkt_size;
+	if (in->a->top->value > val_limit
+		&& in->a->top->value > val_limit + (bkt_size / 3 * 2))
 		operation_rr(in);
 	else
 		operation_rb(in);

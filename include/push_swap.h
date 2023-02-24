@@ -6,7 +6,7 @@
 /*   By: ttakami <ttakami@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 11:30:23 by ttakami           #+#    #+#             */
-/*   Updated: 2023/02/21 02:50:11 by ttakami          ###   ########.fr       */
+/*   Updated: 2023/02/24 14:24:28 by ttakami          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define REF_NUM_MID 200
 # define REF_NUM_HIGH 300
 
-# define MSG_FAILURE "ERROR"
+# define MSG_FAILURE "Error"
 
 typedef struct s_element
 {
@@ -71,13 +71,13 @@ t_stk	*stack_new(void);
 void	stack_push(t_stk *self, t_elem *el);
 t_elem	*stack_pop(t_stk *self);
 int		stack_add_a_back(t_stk_info *in, int *vals);
-int		stack_info_init(t_stk_info *in, int size);
-void	stack_info_deinit(t_stk_info *in);
 int		stack_is_sorted(t_stk *self);
 int		stack_get_max(t_stk *self);
 int		stack_get_min(t_stk *self);
 int		stack_get_index(t_stk *self, int num);
 void	stack_free(t_stk *stk);
+int		stack_info_init(t_stk_info *in, int size);
+void	stack_info_deinit(t_stk_info *in);
 int		opelst_add_back(t_list **lst, char *op);
 void	opelst_print(void *op);
 int		operation_sa(t_stk_info *in);
@@ -91,8 +91,8 @@ int		operation_rr(t_stk_info *in);
 int		operation_rra(t_stk_info *in);
 int		operation_rrb(t_stk_info *in);
 int		operation_rrr(t_stk_info *in);
-int		operation_smart_s(t_stk_info *in, int mn);
-int		operation_smart_r(t_stk_info *in, int mn);
+int		operation_smart_s(t_stk_info *in, int val_limit);
+int		operation_smart_r(t_stk_info *in, int bkt_size);
 int		solver_less_than_six(t_stk_info *in);
 int		solver_six_or_more(t_stk_info *in);
 int		push_swap(int *vals, int size);

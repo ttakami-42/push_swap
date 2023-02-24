@@ -6,7 +6,7 @@
 /*   By: ttakami <ttakami@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 02:42:34 by ttakami           #+#    #+#             */
-/*   Updated: 2023/02/21 02:53:09 by ttakami          ###   ########.fr       */
+/*   Updated: 2023/02/22 02:44:07 by ttakami          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ t_elem	*stack_pop(t_stk *self)
 	t_elem	*el;
 
 	el = self->top;
-	if (self->top == NULL)
+	if (!self->top)
 		return (el);
 	self->top = el->next;
 	if (self->top)

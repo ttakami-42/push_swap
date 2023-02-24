@@ -6,7 +6,7 @@
 /*   By: ttakami <ttakami@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 01:04:20 by ttakami           #+#    #+#             */
-/*   Updated: 2023/02/21 00:42:16 by ttakami          ###   ########.fr       */
+/*   Updated: 2023/02/23 23:33:57 by ttakami          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	stack_is_sorted(t_stk *self)
 	t_elem	*el;
 
 	temp = 0;
+	if (!self)
+		return (-1);
 	el = self->top;
 	while (el)
 	{
@@ -35,6 +37,8 @@ int	stack_get_max(t_stk *self)
 	t_elem	*el;
 
 	max = 0;
+	if (!self)
+		return (-1);
 	el = self->top;
 	while (el)
 	{
@@ -51,6 +55,8 @@ int	stack_get_min(t_stk *self)
 	t_elem	*el;
 
 	min = INT_MAX;
+	if (!self)
+		return (-1);
 	el = self->top;
 	while (el)
 	{
@@ -67,6 +73,8 @@ int	stack_get_index(t_stk *self, int num)
 	t_elem	*el;
 
 	idx = 0;
+	if (!self)
+		return (-1);
 	el = self->top;
 	while (el)
 	{

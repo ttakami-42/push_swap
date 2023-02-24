@@ -6,13 +6,15 @@
 #    By: ttakami <ttakami@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/12 15:46:07 by ttakami           #+#    #+#              #
-#    Updated: 2023/02/21 02:52:00 by ttakami          ###   ########.fr        #
+#    Updated: 2023/02/23 18:25:06 by ttakami          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= push_swap
 CC			= cc
 CFLAGS		= -Wall -Werror -Wextra
+DEBUG		= -g -fsanitize=address -fsanitize=undefined
+LEAK		= -g -fsanitize=leak
 SRCS		=   utils.c \
 				convert_input.c \
 				validate_input.c \
@@ -69,12 +71,15 @@ $(LIBFT):
 	@make bonus -C libft
 
 $(NAME):	$(LIBFT) $(ALL_OBJS)
-	gcc -o $(NAME) $(ALL_OBJS) $(LIBFT)
+	$(CC) -o $(NAME) $(ALL_OBJS) $(LIBFT)
 
 debug:	directories $(NAME)
-	gcc --sanitize=leak -o $(NAME) $(ALL_OBJS) $(LIBFT)
+	$(CC) $(DEBUG) -o $(NAME) $(ALL_OBJS) $(LIBFT)
 
-.PHONY:	all clean fclean re debug
+leak:	directories $(NAME)
+	$(CC) $(LEAK) -o $(NAME) $(ALL_OBJS) $(LIBFT)
+
+.PHONY:	all clean fclean re debug leak
 
 #.PHONY:	all clean fclean re bonus debug
 
