@@ -6,40 +6,40 @@
 /*   By: ttakami <ttakami@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 19:16:59 by ttakami           #+#    #+#             */
-/*   Updated: 2023/02/24 21:23:15 by ttakami          ###   ########.fr       */
+/*   Updated: 2023/02/25 03:28:20 by ttakami          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	push_b(t_stk_info *in, int bkt_size);
+static int	optimizer(t_stk_info *in, int bkt_size);
 static int	operations(t_stk_info *in, int val_limit, int bkt_size);
-static int	push_a(t_stk_info *in);
+static int	sort(t_stk_info *in);
 
 int	solver_six_or_more(t_stk_info *in)
 {
 	while (in->a->size >= REF_NUM_HIGH && !stack_is_sorted(in->a))
-		if (!push_b(in, in->a->size / 9))
+		if (!optimizer(in, in->a->size / 9))
 			return (0);
 	while (in->a->size >= REF_NUM_MID && !stack_is_sorted(in->a))
-		if (!push_b(in, in->a->size / 7))
+		if (!optimizer(in, in->a->size / 7))
 			return (0);
 	while (in->a->size >= REF_NUM_BASE && !stack_is_sorted(in->a))
-		if (!push_b(in, in->a->size / 5))
+		if (!optimizer(in, in->a->size / 5))
 			return (0);
 	while (in->a->size > REF_NUM_LOW && !stack_is_sorted(in->a))
-		if (!push_b(in, in->a->size / 4))
+		if (!optimizer(in, in->a->size / 4))
 			return (0);
 	while (in->a->size > 1 && !stack_is_sorted(in->a))
-		if (!push_b(in, in->a->max - 1))
+		if (!optimizer(in, in->a->max - 1))
 			return (0);
 	while (in->b->top)
-		if (!push_a(in))
+		if (!sort(in))
 			return (0);
 	return (1);
 }
 
-static int	push_b(t_stk_info *in, int bkt_size)
+static int	optimizer(t_stk_info *in, int bkt_size)
 {
 	int	val_limit;
 
@@ -77,7 +77,7 @@ static int	operations(t_stk_info *in, int val_limit, int bkt_size)
 		return (operation_ra(in));
 }
 
-static int	push_a(t_stk_info *in)
+static int	sort(t_stk_info *in)
 {
 	while (in->b->top->value != in->b->max)
 	{
