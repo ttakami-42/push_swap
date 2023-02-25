@@ -6,7 +6,7 @@
 /*   By: ttakami <ttakami@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 19:52:13 by ttakami           #+#    #+#             */
-/*   Updated: 2023/02/23 21:07:51 by ttakami          ###   ########.fr       */
+/*   Updated: 2023/02/25 17:39:48 by ttakami          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,7 @@ int	operation_smart_s(t_stk_info *in, int val_limit)
 	if (in->b->top && in->b->top->next
 		&& in->b->top->value < in->b->top->next->value
 		&& in->b->top->next->value <= val_limit)
-		operation_ss(in);
+		return (operation_ss(in));
 	else
-		operation_sa(in);
-	return (1);
+		return (operation_sa(in));
 }

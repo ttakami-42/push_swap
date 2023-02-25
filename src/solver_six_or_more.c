@@ -6,15 +6,15 @@
 /*   By: ttakami <ttakami@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 19:16:59 by ttakami           #+#    #+#             */
-/*   Updated: 2023/02/25 03:28:20 by ttakami          ###   ########.fr       */
+/*   Updated: 2023/02/25 17:50:19 by ttakami          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 static int	optimizer(t_stk_info *in, int bkt_size);
-static int	operations(t_stk_info *in, int val_limit, int bkt_size);
-static int	sort(t_stk_info *in);
+static int	optimizer_opes(t_stk_info *in, int val_limit, int bkt_size);
+static int	sorter(t_stk_info *in);
 
 int	solver_six_or_more(t_stk_info *in)
 {
@@ -34,7 +34,7 @@ int	solver_six_or_more(t_stk_info *in)
 		if (!optimizer(in, in->a->max - 1))
 			return (0);
 	while (in->b->top)
-		if (!sort(in))
+		if (!sorter(in))
 			return (0);
 	return (1);
 }
@@ -44,40 +44,40 @@ static int	optimizer(t_stk_info *in, int bkt_size)
 	int	val_limit;
 
 	val_limit = in->a->min + bkt_size;
-	while (in->a->size > 0 && in->a->min < val_limit)
-		if (!operations(in, val_limit, bkt_size))
+	while (in->a->size > 1 && in->a->min < val_limit)
+		if (!optimizer_opes(in, val_limit, bkt_size))
 			return (0);
 	return (1);
 }
 
-static int	operations(t_stk_info *in, int val_limit, int bkt_size)
+static int	optimizer_opes(t_stk_info *in, int val_limit, int bkt_size)
 {
-	if (in->a->top->value <= val_limit)
+	if (in->a->top->value != in->a->max && in->a->top->value <= val_limit)
 		return (operation_pb(in));
-	else if (in->a->top->value != in->a->max && (in->a->top->value > val_limit)
-		&& (in->a->top->value <= val_limit + (bkt_size / 3 * 2)))
+	else if (in->a->top->value != in->a->max && in->a->top->value > val_limit
+		&& in->a->top->value <= val_limit + (bkt_size / 3 * 2))
 	{
-		if (!operation_pb(in))
+		if (!operation_pb(in) || !operation_smart_r(in, bkt_size))
 			return (0);
-		return (operation_smart_r(in, bkt_size));
 	}
-	else if (in->a->top->next->value <= val_limit)
+	else if (in->a->top->next->value != in->a->max
+		&& in->a->top->next->value <= val_limit)
 	{
-		if (!operation_smart_s(in, val_limit))
+		if (!operation_smart_s(in, val_limit) || !operation_pb(in))
 			return (0);
-		return (operation_pb(in));
 	}
-	else if (in->a->bottom->value <= val_limit)
+	else if (in->a->bottom->value != in->a->max
+		&& in->a->bottom->value <= val_limit)
 	{
-		if (!operation_rra(in))
+		if (!operation_rra(in) || !operation_pb(in))
 			return (0);
-		return (operation_pb(in));
 	}
 	else
 		return (operation_ra(in));
+	return (1);
 }
 
-static int	sort(t_stk_info *in)
+static int	sorter(t_stk_info *in)
 {
 	while (in->b->top->value != in->b->max)
 	{
@@ -99,8 +99,8 @@ static int	sort(t_stk_info *in)
 		return (0);
 	if (in->a->top->value != in->a->min
 		&& in->b->top->value < in->b->top->next->value)
-		return (operation_ss(in));
+			return (operation_ss(in));
 	if (in->a->top->value != in->a->min)
-		return (operation_sa(in));
+			return (operation_sa(in));
 	return (1);
 }
