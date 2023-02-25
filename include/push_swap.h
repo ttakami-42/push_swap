@@ -6,7 +6,7 @@
 /*   By: ttakami <ttakami@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 11:30:23 by ttakami           #+#    #+#             */
-/*   Updated: 2023/02/26 02:26:52 by ttakami          ###   ########.fr       */
+/*   Updated: 2023/02/26 02:52:40 by ttakami          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,6 @@
 # define MSG_R_ROTATE_A "rra"
 # define MSG_R_ROTATE_B "rrb"
 # define MSG_R_ROTATE_BOTH "rrr"
-
-# define REF_NUM_MINI 6
-# define REF_NUM_LOW 10
-# define REF_NUM_BASE 100
-# define REF_NUM_MID 200
-# define REF_NUM_HIGH 300
 
 # define MSG_FAILURE "Error"
 

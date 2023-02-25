@@ -6,7 +6,7 @@
 /*   By: ttakami <ttakami@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 19:16:59 by ttakami           #+#    #+#             */
-/*   Updated: 2023/02/26 02:31:08 by ttakami          ###   ########.fr       */
+/*   Updated: 2023/02/26 02:53:02 by ttakami          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,22 @@ static int	sorter(t_stk_info *in);
 
 int	solver_six_or_more(t_stk_info *in)
 {
-	while (in->a->size >= REF_NUM_HIGH && !stack_is_sorted(in->a))
+	while (in->a->size >= 500)
+		if (!optimizer(in, in->a->size / 10))
+			return (0);
+	while (in->a->size >= 400 && !stack_is_sorted(in->a))
 		if (!optimizer(in, in->a->size / 9))
 			return (0);
-	while (in->a->size >= REF_NUM_MID && !stack_is_sorted(in->a))
+	while (in->a->size >= 300 && !stack_is_sorted(in->a))
+		if (!optimizer(in, in->a->size / 8))
+			return (0);
+	while (in->a->size >= 200 && !stack_is_sorted(in->a))
 		if (!optimizer(in, in->a->size / 7))
 			return (0);
-	while (in->a->size >= REF_NUM_BASE && !stack_is_sorted(in->a))
+	while (in->a->size >= 100 && !stack_is_sorted(in->a))
 		if (!optimizer(in, in->a->size / 5))
 			return (0);
-	while (in->a->size > REF_NUM_LOW && !stack_is_sorted(in->a))
+	while (in->a->size > 10 && !stack_is_sorted(in->a))
 		if (!optimizer(in, in->a->size / 4))
 			return (0);
 	while (in->a->size > 1 && !stack_is_sorted(in->a))

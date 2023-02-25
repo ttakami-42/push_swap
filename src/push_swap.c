@@ -6,7 +6,7 @@
 /*   By: ttakami <ttakami@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 17:07:50 by ttakami           #+#    #+#             */
-/*   Updated: 2023/02/23 18:24:11 by ttakami          ###   ########.fr       */
+/*   Updated: 2023/02/26 02:52:58 by ttakami          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	push_swap(int *vals, int size)
 		stack_info_deinit(&in);
 		return (1);
 	}
-	if (in.size < REF_NUM_MINI)
+	if (in.size < 6)
 		is_ok = solver_less_than_six(&in);
 	else
 		is_ok = solver_six_or_more(&in);
