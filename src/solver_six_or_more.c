@@ -6,7 +6,7 @@
 /*   By: ttakami <ttakami@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 19:16:59 by ttakami           #+#    #+#             */
-/*   Updated: 2023/02/25 17:50:19 by ttakami          ###   ########.fr       */
+/*   Updated: 2023/02/25 18:13:32 by ttakami          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	solver_six_or_more(t_stk_info *in)
 	while (in->a->size > REF_NUM_LOW && !stack_is_sorted(in->a))
 		if (!optimizer(in, in->a->size / 4))
 			return (0);
-	while (in->a->size > 1 && !stack_is_sorted(in->a))
+	while (in->a->size > 1)
 		if (!optimizer(in, in->a->max - 1))
 			return (0);
 	while (in->b->top)
