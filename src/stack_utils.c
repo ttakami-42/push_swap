@@ -6,7 +6,7 @@
 /*   By: ttakami <ttakami@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 01:04:20 by ttakami           #+#    #+#             */
-/*   Updated: 2023/02/23 23:33:57 by ttakami          ###   ########.fr       */
+/*   Updated: 2023/02/26 01:30:45 by ttakami          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ int	stack_is_sorted(t_stk *self)
 	int		temp;
 	t_elem	*el;
 
-	temp = 0;
 	if (!self)
 		return (-1);
-	el = self->top;
+	temp = self->top->value;
+	el = self->top->next;
 	while (el)
 	{
-		if (el->value < temp)
+		if (el->value != temp + 1)
 			return (0);
 		temp = el->value;
 		el = el->next;

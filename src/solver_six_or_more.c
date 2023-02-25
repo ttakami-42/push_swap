@@ -6,7 +6,7 @@
 /*   By: ttakami <ttakami@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 19:16:59 by ttakami           #+#    #+#             */
-/*   Updated: 2023/02/25 18:13:32 by ttakami          ###   ########.fr       */
+/*   Updated: 2023/02/26 02:31:08 by ttakami          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	solver_six_or_more(t_stk_info *in)
 	while (in->a->size > REF_NUM_LOW && !stack_is_sorted(in->a))
 		if (!optimizer(in, in->a->size / 4))
 			return (0);
-	while (in->a->size > 1)
+	while (in->a->size > 1 && !stack_is_sorted(in->a))
 		if (!optimizer(in, in->a->max - 1))
 			return (0);
 	while (in->b->top)
@@ -44,7 +44,7 @@ static int	optimizer(t_stk_info *in, int bkt_size)
 	int	val_limit;
 
 	val_limit = in->a->min + bkt_size;
-	while (in->a->size > 1 && in->a->min < val_limit)
+	while (in->a->size > 1 && in->a->min < val_limit && !stack_is_sorted(in->a))
 		if (!optimizer_opes(in, val_limit, bkt_size))
 			return (0);
 	return (1);
@@ -99,8 +99,8 @@ static int	sorter(t_stk_info *in)
 		return (0);
 	if (in->a->top->value != in->a->min
 		&& in->b->top->value < in->b->top->next->value)
-			return (operation_ss(in));
+		return (operation_ss(in));
 	if (in->a->top->value != in->a->min)
-			return (operation_sa(in));
+		return (operation_sa(in));
 	return (1);
 }
