@@ -6,7 +6,7 @@
 #    By: ttakami <ttakami@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/12 15:46:07 by ttakami           #+#    #+#              #
-#    Updated: 2023/02/27 19:15:19 by ttakami          ###   ########.fr        #
+#    Updated: 2023/02/27 23:14:50 by ttakami          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,6 +80,6 @@ leak: $(NAME)
 
 .PHONY:	all clean fclean re debug leak
 
-#.PHONY:	all clean fclean re bonus debug
+#.PHONY:	all clean fclean re debug leak bonus
 
 vpath %.c src
