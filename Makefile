@@ -6,7 +6,7 @@
 #    By: ttakami <ttakami@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/12 15:46:07 by ttakami           #+#    #+#              #
-#    Updated: 2023/02/23 18:25:06 by ttakami          ###   ########.fr        #
+#    Updated: 2023/02/27 19:15:19 by ttakami          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,39 +45,38 @@ OBJS		= $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
 ALL_OBJS	= $(OBJS)
 #endif
 
-all:	directories $(NAME)
+all: $(NAME)
 
-directories:
+$(OBJDIR)/%.o: %.c
 	@mkdir -p $(OBJDIR)
-
-clean:
-	rm -rf $(OBJDIR)
-	@make -C libft clean
-
-fclean:	clean
-	rm -f $(NAME)
-	rm -f $(LIBFT)
-
-re:	fclean all
-
-#bonus:
-#@$(MAKE) WITH_BONUS=1 $(NAME)
-
-$(OBJDIR)/%.o:	%.c
 	@[ -d $(OBJDIR) ]
 	$(CC) -c $(CFLAGS) -o $@ $< $(HEADERPATH)
 
 $(LIBFT):
 	@make bonus -C libft
 
-$(NAME):	$(LIBFT) $(ALL_OBJS)
+$(NAME): $(LIBFT) $(ALL_OBJS)
 	$(CC) -o $(NAME) $(ALL_OBJS) $(LIBFT)
 
-debug:	directories $(NAME)
+
+clean:
+	rm -rf $(OBJDIR)
+	@make -C libft clean
+
+fclean: clean
+	rm -f $(NAME)
+	rm -f $(LIBFT)
+
+re: fclean all
+
+debug: $(NAME)
 	$(CC) $(DEBUG) -o $(NAME) $(ALL_OBJS) $(LIBFT)
 
-leak:	directories $(NAME)
+leak: $(NAME)
 	$(CC) $(LEAK) -o $(NAME) $(ALL_OBJS) $(LIBFT)
+
+#bonus:
+#@$(MAKE) WITH_BONUS=1 $(NAME)
 
 .PHONY:	all clean fclean re debug leak
 
