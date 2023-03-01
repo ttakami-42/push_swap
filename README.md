@@ -126,21 +126,22 @@ Error
 $>
 ```
 
-* During the evaluation process, a binary will be provided in order to properly check your program.
-* _It will work as follows:_
+### Also, we have checker programs(for Linux and Mac).
 
-	```sh
-	ARG="4 67 3 87 23"; ./push_swap $ARG | wc -l
-	```
-	```
-	6
-	```
-	```sh
-	ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker_OS $ARG
-	```
-	```
-	OK
-	```
+_It will work as follows:_
+
+```sh
+ARG="4 67 3 87 23"; ./push_swap $ARG | wc -l
+```
+```
+6
+```
+```sh
+ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker_OS $ARG
+```
+```
+OK
+```
 
 > **Note**
 ><br>If the program checker_OS displays "KO", it means that your push_swap came up with a list of instructions that doesn’t sort the numbers.
