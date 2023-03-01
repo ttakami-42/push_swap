@@ -6,7 +6,7 @@
 #    By: ttakami <ttakami@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/12 15:46:07 by ttakami           #+#    #+#              #
-#    Updated: 2023/02/27 23:14:50 by ttakami          ###   ########.fr        #
+#    Updated: 2023/03/01 16:31:06 by ttakami          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,9 +33,9 @@ SRCS		=   utils.c \
 				push_swap.c \
 				main.c
 #SRCSB		=
-OBJDIR		= obj
 LIBFT		= libft/libft.a
 HEADERPATH	= -I include
+OBJDIR		= obj
 OBJS		= $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
 #OBJSB		= $(addprefix $(OBJDIR)/, $(SRCSB:.c=.o))
 
@@ -56,7 +56,7 @@ $(LIBFT):
 	@make bonus -C libft
 
 $(NAME): $(LIBFT) $(ALL_OBJS)
-	$(CC) -o $(NAME) $(ALL_OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) -o $(NAME) $(ALL_OBJS) $(LIBFT)
 
 
 clean:
@@ -70,10 +70,10 @@ fclean: clean
 re: fclean all
 
 debug: $(NAME)
-	$(CC) $(DEBUG) -o $(NAME) $(ALL_OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(DEBUG) -o $(NAME) $(ALL_OBJS) $(LIBFT)
 
 leak: $(NAME)
-	$(CC) $(LEAK) -o $(NAME) $(ALL_OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(LEAK) -o $(NAME) $(ALL_OBJS) $(LIBFT)
 
 #bonus:
 #@$(MAKE) WITH_BONUS=1 $(NAME)
