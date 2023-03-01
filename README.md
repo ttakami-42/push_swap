@@ -146,6 +146,58 @@ OK
 > **Note**
 ><br>If the program checker_OS displays "KO", it means that your push_swap came up with a list of instructions that doesn’t sort the numbers.
 
+## Bonus requirement
+
+__The "checker" program__
+
+Write a program named checker that takes as an argument the stack a formatted
+as a list of integers. The first argument should be at the top of the stack (be careful about the order). If no argument is given, it stops and displays nothing.
+
+Program name | checker
+:----------- | :------
+Turn in files |  *.h, *.c
+Makefile | bonus
+Arguments | stack a: A list of integers
+External funcs | • read, write, malloc, free, exit<br>• ft_printf and any equivalent YOU coded
+Libft authorized | Yes
+
+* It will then wait and read instructions on the standard input, each instruction will be followed by ’\n’. Once all the instructions have been read, the program has to execute them on the stack received as an argument.
+* If after executing those instructions, the stack a is actually sorted and the stack b is empty, then the program must display "OK" followed by a ’\n’ on the standard output.
+* In every other case, it must display "KO" followed by a ’\n’ on the standard output.
+* In case of error, you must display "Error" followed by a ’\n’ on the standard error. Errors include for example: some arguments are not integers, some arguments are bigger than an integer, there are duplicates, an instruction doesn’t exist and/or is incorrectly formatted.
+
+### Example
+```sh
+./checker 3 2 1 0
+```
+```
+rra
+pb
+sa
+rra
+pa
+OK
+```
+```sh
+./checker 3 2 1 0
+```
+```
+sa
+rra
+pb
+KO
+```
+```sh
+./checker 3 2 x 0
+Error
+```
+```sh
+./checker "" 42
+```
+```
+Error
+```
+
 ## My Progoram's behavior is like...
 
-_That Kind of Woman, U Know?_
+_That Kind of Woman, u know?_
