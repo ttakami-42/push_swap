@@ -6,7 +6,7 @@
 /*   By: ttakami <ttakami@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 19:52:13 by ttakami           #+#    #+#             */
-/*   Updated: 2023/02/25 17:39:48 by ttakami          ###   ########.fr       */
+/*   Updated: 2023/03/02 01:43:54 by ttakami          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ int	operation_sa(t_stk_info *in)
 {
 	int	temp;
 
-	if (!in->a->top || !in->a->top->next)
-		return (1);
 	if (!opelst_add_back(&in->opelst, MSG_SWAP_A))
 		return (0);
+	if (!in->a->top || !in->a->top->next)
+		return (1);
 	temp = in->a->top->next->value;
 	in->a->top->next->value = in->a->top->value;
 	in->a->top->value = temp;
@@ -30,10 +30,10 @@ int	operation_sb(t_stk_info *in)
 {
 	int	temp;
 
-	if (!in->b->top || !in->b->top->next)
-		return (1);
 	if (!opelst_add_back(&in->opelst, MSG_SWAP_B))
 		return (0);
+	if (!in->b->top || !in->b->top->next)
+		return (1);
 	temp = in->b->top->next->value;
 	in->b->top->next->value = in->b->top->value;
 	in->b->top->value = temp;
@@ -44,10 +44,10 @@ int	operation_ss(t_stk_info *in)
 {
 	int	temp;
 
-	if (!in->a->top || !in->a->top->next || !in->b->top || !in->b->top->next)
-		return (1);
 	if (!opelst_add_back(&in->opelst, MSG_SWAP_BOTH))
 		return (0);
+	if (!in->a->top || !in->a->top->next || !in->b->top || !in->b->top->next)
+		return (1);
 	temp = in->a->top->next->value;
 	in->a->top->next->value = in->a->top->value;
 	in->a->top->value = temp;
