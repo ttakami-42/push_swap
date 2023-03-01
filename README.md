@@ -110,6 +110,7 @@ Your project must comply with the following rules:
 
 * In case of error, it must display "Error" followed by a ’\n’ on the standard error. Errors include for example: some arguments aren’t integers, some arguments are bigger than an integer and/or there are duplicates.
 
+_Your program will be executed as follows:_
 ```
 $>./push_swap 2 1 3 6 5 8
 sa
