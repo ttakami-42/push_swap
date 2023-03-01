@@ -109,7 +109,9 @@ Your project must comply with the following rules:
 > **Warning**
 ><br>If no parameters are specified, the program must not display anything and give the prompt back.
 
-* In case of error, it must display "Error" followed by a ’\n’ on the standard error. Errors include for example: some arguments aren’t integers, some arguments are bigger than an integer and/or there are duplicates.
+* In case of error, it must display ``Error`` followed by a ’\n’ on the standard error. Errors include for example: 
+	* some arguments aren’t integers
+	* some arguments are bigger than an integer and/or there are duplicates.
 
 _Your program will be executed as follows:_
 ```
@@ -147,7 +149,7 @@ OK
 ```
 
 > **Note**
-><br>If the program checker_OS displays "KO", it means that your push_swap came up with a list of instructions that doesn’t sort the numbers.
+><br>If the program checker_OS displays ``KO``, it means that your push_swap came up with a list of instructions that doesn’t sort the numbers.
 
 ## Bonus requirement
 
@@ -165,9 +167,9 @@ External funcs | • read, write, malloc, free, exit<br>• ft_printf and any eq
 Libft authorized | Yes
 
 * It will then wait and read instructions on the standard input, each instruction will be followed by ’\n’. Once all the instructions have been read, the program has to execute them on the stack received as an argument.
-* If after executing those instructions, the stack a is actually sorted and the stack b is empty, then the program must display "OK" followed by a ’\n’ on the standard output.
-* In every other case, it must display "KO" followed by a ’\n’ on the standard output.
-* In case of error, you must display "Error" followed by a ’\n’ on the standard error. Errors include for example: some arguments are not integers, some arguments are bigger than an integer, there are duplicates, an instruction doesn’t exist and/or is incorrectly formatted.
+* If after executing those instructions, the stack a is actually sorted and the stack b is empty, then the program must display ``OK`` followed by a ’\n’ on the standard output.
+* In every other case, it must display ``KO`` followed by a ’\n’ on the standard output.
+* In case of error, you must display ``Error`` followed by a ’\n’ on the standard error. Errors include for example: some arguments are not integers, some arguments are bigger than an integer, there are duplicates, an instruction doesn’t exist and/or is incorrectly formatted.
 
 ### Example
 ```
