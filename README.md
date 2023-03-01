@@ -127,20 +127,22 @@ Error
 $>
 ```
 
-### Also, we have checker programs(for Linux and Mac).
+__Also, we have checker programs(for Linux and Mac).__
 
 _It will work as follows:_
 
 ```sh
 ARG="4 67 3 87 23"; ./push_swap $ARG | wc -l
 ```
-```
+```sh
+#output
 6
 ```
 ```sh
 ARG="4 67 3 87 23"; ./push_swap $ARG | ./checker_OS $ARG
 ```
-```
+```sh
+#output
 OK
 ```
 
@@ -171,7 +173,8 @@ Libft authorized | Yes
 ```sh
 ./checker 3 2 1 0
 ```
-```
+```sh
+#output
 rra
 pb
 sa
@@ -182,7 +185,8 @@ OK
 ```sh
 ./checker 3 2 1 0
 ```
-```
+```sh
+#output
 sa
 rra
 pb
@@ -190,12 +194,16 @@ KO
 ```
 ```sh
 ./checker 3 2 x 0
+```
+```sh
+#output
 Error
 ```
 ```sh
 ./checker "" 42
 ```
-```
+```sh
+#output
 Error
 ```
 
