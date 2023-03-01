@@ -170,40 +170,22 @@ Libft authorized | Yes
 * In case of error, you must display "Error" followed by a ’\n’ on the standard error. Errors include for example: some arguments are not integers, some arguments are bigger than an integer, there are duplicates, an instruction doesn’t exist and/or is incorrectly formatted.
 
 ### Example
-```sh
-./checker 3 2 1 0
 ```
-```sh
-#output
+$>./checker 3 2 1 0
 rra
 pb
 sa
 rra
 pa
 OK
-```
-```sh
-./checker 3 2 1 0
-```
-```sh
-#output
+$>./checker 3 2 1 0
 sa
 rra
 pb
 KO
-```
-```sh
-./checker 3 2 x 0
-```
-```sh
-#output
+$>./checker 3 2 x 0
 Error
-```
-```sh
-./checker "" 42
-```
-```sh
-#output
+$>./checker "" 42
 Error
 ```
 
