@@ -115,7 +115,7 @@ Your project must comply with the following rules:
 
 _Your program will be executed as follows:_
 ```
-$>./push_swap 2 1 3 6 5 8
+$>./push_swap 2 1 3 7 5 42
 sa
 pb
 pb
