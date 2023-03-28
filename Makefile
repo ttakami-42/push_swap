@@ -6,7 +6,7 @@
 #    By: ttakami <ttakami@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/12 15:46:07 by ttakami           #+#    #+#              #
-#    Updated: 2023/03/01 16:31:06 by ttakami          ###   ########.fr        #
+#    Updated: 2023/03/29 01:06:06 by ttakami          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,6 @@ $(LIBFT):
 
 $(NAME): $(LIBFT) $(ALL_OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(ALL_OBJS) $(LIBFT)
-
 
 clean:
 	rm -rf $(OBJDIR)
