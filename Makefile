@@ -6,7 +6,7 @@
 #    By: ttakami <ttakami@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/12 15:46:07 by ttakami           #+#    #+#              #
-#    Updated: 2023/03/29 01:06:06 by ttakami          ###   ########.fr        #
+#    Updated: 2023/03/31 04:52:31 by ttakami          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,53 +32,58 @@ SRCS		=   utils.c \
 				solver_six_or_more.c \
 				push_swap.c \
 				main.c
-#SRCSB		=
-LIBFT		= libft/libft.a
-HEADERPATH	= -I include
+LIBFTDIR	= libft
+LIBFT		= -lft
+INC			= -Iinclude
 OBJDIR		= obj
 OBJS		= $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
-#OBJSB		= $(addprefix $(OBJDIR)/, $(SRCSB:.c=.o))
 
-#ifdef WITH_BONUS
-#ALL_OBJS	= $(OBJSB)
-#else
-ALL_OBJS	= $(OBJS)
-#endif
+# color codes
+
+RESET		= \033[0m
+GREEN		= \033[32m
+YELLOW		= \033[33m
+
+# Check if object directory exists, build libft and then the Project
 
 all: $(NAME)
 
 $(OBJDIR)/%.o: %.c
 	@mkdir -p $(OBJDIR)
 	@[ -d $(OBJDIR) ]
-	$(CC) -c $(CFLAGS) -o $@ $< $(HEADERPATH)
+	@echo "$(YELLOW)      - Compiling :$(RESET)" $<
+	$(CC) $(CFLAGS) $(INC) -c -o $@ $<
 
 $(LIBFT):
-	@make bonus -C libft
+	@make bonus --no-print-directory -sC $(LIBFTDIR)
 
-$(NAME): $(LIBFT) $(ALL_OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(ALL_OBJS) $(LIBFT)
+$(NAME): $(LIBFT) $(OBJS)
+	@echo "$(YELLOW)\n      - Building $(RESET)$(NAME) $(YELLOW)...\n$(RESET)"
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L$(LIBFTDIR) $(LIBFT)
+	@echo "$(GREEN)***   Project $(NAME) successfully compiled   ***\n$(RESET)"
 
 clean:
-	rm -rf $(OBJDIR)
-	@make -C libft clean
+	@echo "$(GREEN)***   Deleting all object from $(NAME)   ...   ***\n$(RESET)"
+	@rm -rf $(OBJDIR)
+	@make clean --no-print-directory -sC $(LIBFTDIR)
+	@echo "done\n"
 
 fclean: clean
-	rm -f $(NAME)
-	rm -f $(LIBFT)
+	@echo "$(GREEN)***   Deleting executable file from $(NAME)   ...   ***\n$(RESET)"
+	@rm -f $(NAME)
+	@make fclean --no-print-directory -sC $(LIBFTDIR)
+	@echo "done\n"
 
 re: fclean all
 
-debug: $(NAME)
-	$(CC) $(CFLAGS) $(DEBUG) -o $(NAME) $(ALL_OBJS) $(LIBFT)
+debug: $(LIBFT) $(OBJS)
+	$(CC) $(CFLAGS) $(DEBUG) -o $(NAME) $(OBJS) -L$(LIBFTDIR) $(LIBFT)
+	@echo "$(GREEN)***   You can debug $(NAME)   ...   ***\n$(RESET)"
 
-leak: $(NAME)
-	$(CC) $(CFLAGS) $(LEAK) -o $(NAME) $(ALL_OBJS) $(LIBFT)
-
-#bonus:
-#@$(MAKE) WITH_BONUS=1 $(NAME)
+leak: $(LIBFT) $(OBJS)
+	$(CC) $(CFLAGS) $(LEAK) -o $(NAME) $(OBJS) -L$(LIBFTDIR) $(LIBFT)
+	@echo "$(GREEN)***   You can see leaks $(NAME)   ...   ***\n$(RESET)"
 
 .PHONY:	all clean fclean re debug leak
-
-#.PHONY:	all clean fclean re debug leak bonus
 
 vpath %.c src
