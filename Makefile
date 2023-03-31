@@ -6,7 +6,7 @@
 #    By: ttakami <ttakami@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/12 15:46:07 by ttakami           #+#    #+#              #
-#    Updated: 2023/03/31 11:57:10 by ttakami          ###   ########.fr        #
+#    Updated: 2023/03/31 12:08:12 by ttakami          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,9 +65,9 @@ $(LIBFT):
 	@make bonus --no-print-directory -sC $(LIBFTDIR)
 
 $(NAME): $(LIBFT) $(OBJS)
-#@echo "$(YELLOW)\n      - Building $(RESET)$(NAME) $(YELLOW)...\n$(RESET)"
+	@echo "$(YELLOW)\n      - Building $(RESET)$(NAME) $(YELLOW)...\n$(RESET)"
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT)
-#@echo "$(GREEN)***   Project $(NAME) successfully compiled   ***\n$(RESET)"
+	@echo "$(GREEN)***   Project $(NAME) successfully compiled   ***\n$(RESET)"
 
 clean:
 	@echo "$(GREEN)***   Deleting all object from $(NAME)   ...   ***\n$(RESET)"
@@ -83,13 +83,13 @@ fclean: clean
 
 re: fclean all
 
-debug:
-	@make fclean all --no-print-directory WITH_DEBUG=1
-	@echo "$(GREEN)***   You can debug $(NAME)   ...   ***\n$(RESET)"
+debug: fclean
+	@make --no-print-directory WITH_DEBUG=1
+	@echo "$(GREEN)***   You can debug $(NAME)   ***\n$(RESET)"
 
-leak:
-	@make fclean all --no-print-directory WITH_LEAK=1
-	@echo "$(GREEN)***   You can see leaks $(NAME)   ...   ***\n$(RESET)"
+leak: fclean
+	@make --no-print-directory WITH_LEAK=1
+	@echo "$(GREEN)***   You can see leaks $(NAME)   ***\n$(RESET)"
 
 .PHONY:	all clean fclean re debug leak
 
