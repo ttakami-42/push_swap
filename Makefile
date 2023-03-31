@@ -6,15 +6,22 @@
 #    By: ttakami <ttakami@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/12 15:46:07 by ttakami           #+#    #+#              #
-#    Updated: 2023/03/31 04:52:31 by ttakami          ###   ########.fr        #
+#    Updated: 2023/03/31 11:57:10 by ttakami          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= push_swap
 CC			= cc
 CFLAGS		= -Wall -Werror -Wextra
-DEBUG		= -g -fsanitize=address -fsanitize=undefined
-LEAK		= -g -fsanitize=leak
+
+ifdef WITH_DEBUG
+	CFLAGS	= -Wall -Werror -Wextra -g -fsanitize=address -fsanitize=undefined
+endif
+
+ifdef WITH_LEAK
+	CFLAGS	= -Wall -Werror -Wextra -g -fsanitize=leak
+endif
+
 SRCS		=   utils.c \
 				convert_input.c \
 				validate_input.c \
@@ -33,8 +40,8 @@ SRCS		=   utils.c \
 				push_swap.c \
 				main.c
 LIBFTDIR	= libft
-LIBFT		= -lft
-INC			= -Iinclude
+LIBFT		= $(addprefix $(LIBFTDIR)/, libft.a)
+INC			= -Iinclude -I$(LIBFTDIR)
 OBJDIR		= obj
 OBJS		= $(addprefix $(OBJDIR)/, $(SRCS:.c=.o))
 
@@ -58,9 +65,9 @@ $(LIBFT):
 	@make bonus --no-print-directory -sC $(LIBFTDIR)
 
 $(NAME): $(LIBFT) $(OBJS)
-	@echo "$(YELLOW)\n      - Building $(RESET)$(NAME) $(YELLOW)...\n$(RESET)"
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) -L$(LIBFTDIR) $(LIBFT)
-	@echo "$(GREEN)***   Project $(NAME) successfully compiled   ***\n$(RESET)"
+#@echo "$(YELLOW)\n      - Building $(RESET)$(NAME) $(YELLOW)...\n$(RESET)"
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT)
+#@echo "$(GREEN)***   Project $(NAME) successfully compiled   ***\n$(RESET)"
 
 clean:
 	@echo "$(GREEN)***   Deleting all object from $(NAME)   ...   ***\n$(RESET)"
@@ -76,12 +83,12 @@ fclean: clean
 
 re: fclean all
 
-debug: $(LIBFT) $(OBJS)
-	$(CC) $(CFLAGS) $(DEBUG) -o $(NAME) $(OBJS) -L$(LIBFTDIR) $(LIBFT)
+debug:
+	@make fclean all --no-print-directory WITH_DEBUG=1
 	@echo "$(GREEN)***   You can debug $(NAME)   ...   ***\n$(RESET)"
 
-leak: $(LIBFT) $(OBJS)
-	$(CC) $(CFLAGS) $(LEAK) -o $(NAME) $(OBJS) -L$(LIBFTDIR) $(LIBFT)
+leak:
+	@make fclean all --no-print-directory WITH_LEAK=1
 	@echo "$(GREEN)***   You can see leaks $(NAME)   ...   ***\n$(RESET)"
 
 .PHONY:	all clean fclean re debug leak

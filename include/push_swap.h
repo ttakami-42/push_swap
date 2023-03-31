@@ -6,14 +6,14 @@
 /*   By: ttakami <ttakami@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 11:30:23 by ttakami           #+#    #+#             */
-/*   Updated: 2023/03/31 01:50:08 by ttakami          ###   ########.fr       */
+/*   Updated: 2023/03/31 08:18:47 by ttakami          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "../libft/libft.h"
+# include "libft.h"
 
 # define MSG_SWAP_A "sa"
 # define MSG_SWAP_B "sb"
