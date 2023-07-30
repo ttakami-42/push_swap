@@ -191,5 +191,5 @@ $>./checker "" 42
 Error
 ```
 
-## My Progoram's behavior is like...
+## My Program's behavior is like...
 ![Animation](https://user-images.githubusercontent.com/67182687/222217900-63d1a5e9-469b-4f33-9176-7a6e1400721f.gif)
